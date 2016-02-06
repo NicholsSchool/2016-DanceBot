@@ -11,7 +11,6 @@
 
 package org.usfirst.frc4930.robot.subsystems;
 
-import org.usfirst.frc4930.robot.Robot;
 import org.usfirst.frc4930.robot.RobotMap;
 import org.usfirst.frc4930.robot.commands.*;
 
@@ -55,19 +54,8 @@ public class DriveTrain extends Subsystem {
         // setDefaultCommand(new MySpecialCommand());
     }
     public void tankDrive(Joystick left, Joystick right){
-    	robotDrive.tankDrive( left, right );
+    	robotDrive.tankDrive(left, right);
     }
-    public void takeJoystickInputs(Joystick left, Joystick right) {
-	
-    	if(RobotMap.isButton3pressed == true){
-    		robotDrive.tankDrive(-left.getY(), -right.getY());
-       	}
-       	else {
-       		robotDrive.tankDrive(left.getY(), right.getY());
-        }
-    	
-    	
-	}
     public void stop(){
     	robotDrive.drive(0, 0);
     }

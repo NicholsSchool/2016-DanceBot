@@ -1,15 +1,12 @@
 package org.usfirst.frc4930.robot.commands;
 
-import org.usfirst.frc4930.robot.Robot;
-import org.usfirst.frc4930.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class InvertJoysticks extends Command {
-	
+
     public InvertJoysticks() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,13 +18,11 @@ public class InvertJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.isButton3pressed=!RobotMap.isButton3pressed;
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
+    //protected boolean isFinished() {
+    //}
 
     // Called once after isFinished returns true
     protected void end() {
@@ -37,4 +32,10 @@ public class InvertJoysticks extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+
+	@Override
+	protected boolean isFinished() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
