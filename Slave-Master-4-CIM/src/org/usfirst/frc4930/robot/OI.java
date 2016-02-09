@@ -36,8 +36,6 @@ public class OI {
         
         joystick0 = new Joystick(0);
         
-
-
         // SmartDashboard Buttons
         SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         SmartDashboard.putData("TankDrive", new TankDrive());

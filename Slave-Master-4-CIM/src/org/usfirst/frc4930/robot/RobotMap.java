@@ -49,7 +49,7 @@ public class RobotMap {
         driveTrainTalonSRXRightFront4 = new CANTalon(3);
         LiveWindow.addActuator("DriveTrain", "TalonSRXRightFront4", driveTrainTalonSRXRightFront4);
         
-        driveTrainRobotDrive = new RobotDrive( driveTrainTalonSRXLeftBack1, driveTrainTalonSRXLeftFront2, driveTrainTalonSRXRightBack3, driveTrainTalonSRXRightFront4 );
+        driveTrainRobotDrive = new RobotDrive( driveTrainTalonSRXLeftFront2, driveTrainTalonSRXRightFront4 );
         
         driveTrainRobotDrive.setSafetyEnabled(true);
         driveTrainRobotDrive.setExpiration(0.1);
