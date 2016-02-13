@@ -5,6 +5,9 @@ import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc4930.DanceBot2016.OI;
+import org.usfirst.frc4930.DanceBot2016.Robot;
 
 public class Cameras {
 	
@@ -28,20 +31,12 @@ public class Cameras {
 	}
 	
 	public static void changeCam(int newId) {
-		if(curCam == frontCam){
-		NIVision.IMAQdxStopAcquisition(frontCam);
-		curCam = backCam;
-		NIVision.IMAQdxConfigureGrab(backCam);
-    	NIVision.IMAQdxStartAcquisition(backCam);
+
+		NIVision.IMAQdxStopAcquisition(curCam);
+		curCam = newId;
+		NIVision.IMAQdxConfigureGrab(newId);
+    	NIVision.IMAQdxStartAcquisition(newId);
     	
-		}
-		else if(curCam == backCam){
-			NIVision.IMAQdxStopAcquisition(backCam);
-			curCam = frontCam;
-	    	NIVision.IMAQdxConfigureGrab(frontCam);
-	    	NIVision.IMAQdxStartAcquisition(frontCam);
-	    	
-		}
     }
 	
 	public void updateCam() {
@@ -49,9 +44,25 @@ public class Cameras {
         server.setImage(frame);
     }
 	
-	public void init() {
+	public void initialize() {
+		NIVision.IMAQdxStartAcquisition(curCam);
 		changeCam(frontCam);
 	}
-	
+	public void execute() {
+		
+//		if(Robot.button3IsPressed){
+//			changeCam(frontCam);
+//		
+//		}
+//		if(Robot.button4IsPressed){
+//			changeCam(backCam);
+//		}
+		updateCam();
+	}
+
+
+
+
+
 	
 }

@@ -38,11 +38,11 @@ public class Robot extends IterativeRobot {
     
 	
 	Command autonomousCommand;
-
+//	public static boolean button3IsPressed = false;
+//	public static boolean button4IsPressed = false;
     public static OI oi;
-
+    public static Cameras Cameras;
     public static DriveTrain driveTrain;
-    public static SwitchCams cameras;
     
 
     /**
@@ -54,13 +54,13 @@ public class Robot extends IterativeRobot {
 
         driveTrain = new DriveTrain();
         
-        cameras = new SwitchCams();
+        Cameras = new Cameras();
         
 //        server2 = CameraServer.getInstance();
 //        server2.setQuality(50);
 //        server2.startAutomaticCapture("cam0");
          
-        
+
         
         oi = new OI();
 
@@ -104,6 +104,7 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null){
         	autonomousCommand.cancel();
         }
+        Cameras.initialize();
         //NIVision.IMAQdxStartAcquisition(session);
     }
 
@@ -112,6 +113,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        Cameras.execute();
 //        NIVision.IMAQdxGrab(session, frame, 1);
 //        CameraServer.getInstance().setImage(frame);
     }
@@ -120,4 +122,7 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
+//    public boolean getButton3(){
+//    	return button3IsPressed;
+//    }
 }
