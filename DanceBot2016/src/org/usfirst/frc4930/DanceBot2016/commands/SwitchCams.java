@@ -1,10 +1,6 @@
 package org.usfirst.frc4930.DanceBot2016.commands;
 
-import org.usfirst.frc4930.DanceBot2016.OI;
-import org.usfirst.frc4930.DanceBot2016.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.CameraServer;
 
 public class SwitchCams extends Command {
 
@@ -12,14 +8,9 @@ public class SwitchCams extends Command {
 //	public CANTalon motor1 = new CANTalon(2);
 
 	
-	CameraServer server;
-	boolean camera0;
 	
     public SwitchCams() {
-    	server = CameraServer.getInstance();
-        server.setQuality(50);
-        server.startAutomaticCapture("cam0");
-        camera0 = true;
+    	
     }
 
     // Called just before this Command runs the first time
@@ -28,9 +19,16 @@ public class SwitchCams extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
-    	cameraSwitch();
-    	System.out.println("Executed");
+    	if (Cameras._cam0 == true) {
+    		Cameras.changeCam(Cameras.backCam);
+    		Cameras._cam0 = false;
+    		
+    	}
+    	
+    	else if (Cameras._cam0 == false) {
+    		Cameras.changeCam(Cameras.frontCam);
+    		Cameras._cam0 = true;
+    	}
     }
 
 
@@ -48,18 +46,4 @@ public class SwitchCams extends Command {
     protected void interrupted() {
     }
     
-    private void cameraSwitch() {
-    	if(camera0) {
-    		server.startAutomaticCapture("cam1");
-    		camera0 = false;
-    		isFinished();
-    	}
-    	else if(!camera0){
-    		server.startAutomaticCapture("cam0");
-    		camera0 = true;
-    		isFinished();
-    	}
-    	
-    	
-    }
 }
